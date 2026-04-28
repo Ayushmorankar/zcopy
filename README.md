@@ -32,10 +32,10 @@ sudo insmod zcopy.ko
 
 ```bash
 # Write to the buffer
-echo "Hello from userspace" > /dev/zcopy0
+echo "Hello from userspace" | sudo tee /dev/zcopy0
 
 # Read from the buffer
-cat /dev/zcopy0
+sudo cat /dev/zcopy0
 ```
 
 ### 4. Unload the driver
