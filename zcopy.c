@@ -39,7 +39,7 @@ static ssize_t zcpy_read(struct file *filp, char __user *user_buf, size_t count,
 
     // Accquire the read lock
     // Here the driver will return[in case signal like ctrl+C is recieved] if its put to sleep maybe coz its waiting for the write lock to be released
-    if (down_read_interruptible(&dev->rw_sem))
+    if (down_read_killable(&dev->rw_sem))
         return -ERESTARTSYS;
 
     pr_info("zcopy[read]: read requested for %zu bytes with offset %lld\n", count, *offset);
